@@ -39,6 +39,17 @@ int fromBinary(long long b) {
     return result;
 }
 
+// Количество единиц в двоичной записи числа
+int countOnes(int n) {
+    int count = 0;
+    if (n == 0) return 0;
+    while (n > 0) {
+        if (n % 2 == 1) count++;
+        n /= 2;
+    }
+    return count;
+}
+
 // ===== Главная функция: меню =====
 int main() {
     SetConsoleOutputCP(65001);
@@ -49,6 +60,7 @@ int main() {
         cout << "\n== Вариант 54: двоичная система ==\n";
         cout << "1. Перевести десятичное число в двоичное\n";
         cout << "2. Перевести двоичное число в десятичное\n";
+	cout << "3. Подсчитать количество единиц в двоичной записи\n";
         cout << "0. Выход\n";
         cout << "Выберите пункт: ";
         cin >> choice;
@@ -75,6 +87,17 @@ int main() {
                 }
                 break;
             }
+	    case 3: {
+    		int n;
+    		cout << "Введите целое неотрицательное число: ";
+    		cin >> n;
+    		if (n < 0) {
+        	    cout << "Ошибка: число должно быть неотрицательным.\n";
+        	    break;
+    		}
+    		cout << "Количество единиц: " << countOnes(n) << "\n";
+    		break;
+	    }
             case 0:
                 cout << "Работа завершена.\n";
                 break;
